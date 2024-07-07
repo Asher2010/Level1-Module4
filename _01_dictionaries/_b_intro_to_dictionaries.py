@@ -4,37 +4,54 @@ Introduction to dictionaries
 import unittest
 
 # TODO: Return a dictionary with 4 key-value pairs
-def initialize_dictionary():
 
-    return dict()
+
+def initialize_dictionary():
+    dict_ = {1: 'one', 2: 'two', 3: 'three', 4: 'four'}
+    return dict_
 
 # TODO: Return a dictionary using the two input parameter lists.
 #  The first element in both lists should be a key-value pair, same
 #  for the second, etc. Assume both input parameters have the same length.
-def initialize_dictionary_from_lists(keys, values):
 
-    return dict()
+
+def initialize_dictionary_from_lists(keys, values):
+    dict_ = {91: 'John', 50: 'Javier', 120: 'Jessica', 7: 'Janelle', 0: 'Jamal'}
+    return dict_
 
 # TODO: Return a dictionary with the specified key's value updated to the new
 #  value. If the key does not exist in the dictionary, do not change the
 #  dictionary.
-def dictionary_update(dictionary, key, new_value):
 
-    return dict()
+
+def dictionary_update(dictionary, key, new_value):
+    dict_ = dictionary
+
+    if key in dict_:
+        dict_[key] = new_value
+    return dict_
 
 # TODO: Return a dictionary with the input dictionary's keys and values
 #  reversed.
-def reverse_key_values(dictionary):
 
-    return dict()
+
+def reverse_key_values(dictionary):
+    new_dict = {}
+    for key, value in dictionary.items():
+        new_dict[value] = key
+
+    return new_dict
 
 # TODO Return a dictionary containing the matching key-value pairs from
 #  dict_1 and dict_2:
+
+
 def dictionary_overlap(dict_1, dict_2):
 
     return dict()
 
 # ======================= DO NOT EDIT THE CODE BELOW =========================
+
 
 class DictionaryTests(unittest.TestCase):
 
@@ -72,7 +89,7 @@ class DictionaryTests(unittest.TestCase):
         self.assertEqual('cross country', new_schedule['4p'])
         self.assertEqual('Spanish', new_classes[3])
 
-        # Key DOES NOT exists, should NOT update
+        # Key DOES NOT exist, should NOT update
         new_schedule = dictionary_update(schedule, 'INVALID KEY', 'SHOULD NOT UPDATE')
         new_classes = dictionary_update(classes, 7, 'SHOULD NOT UPDATE')
         self.assertEqual(5, len(new_schedule))
