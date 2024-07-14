@@ -47,8 +47,15 @@ def reverse_key_values(dictionary):
 
 
 def dictionary_overlap(dict_1, dict_2):
+    new_dict = {}
+    for key, value in dict_1.items():
+        if key in dict_2.keys():
+            if dict_1[key] == dict_2[key]:
+                new_dict[key] = value
+    return new_dict
 
-    return dict()
+
+
 
 # ======================= DO NOT EDIT THE CODE BELOW =========================
 
