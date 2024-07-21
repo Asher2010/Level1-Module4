@@ -24,6 +24,8 @@ class MemoryMatch(tk.Tk):
     WIDTH = 1090
     HEIGHT = 500
     TOTAL_BUTTONS = 52
+    number = random.randint(1, 13)
+    button_values = {}
 
     def __init__(self):
         super().__init__()
@@ -41,7 +43,7 @@ class MemoryMatch(tk.Tk):
 
             button = tk.Button(self, text='', fg='black', font=('arial', 24, 'bold'))
             button.place(x=col_x, y=row_y, width=button_width, height=button_height)
-
+            
             button.bind('<ButtonPress>', self.on_button_press)
 
     def on_button_press(self, event):

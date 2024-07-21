@@ -11,12 +11,13 @@ from tkinter import simpledialog, messagebox
 #      When this button is clicked, use an input dialog to ask the user
 #      to enter an ID number.
 
-
+IDS = {}
 class LogSearch(tk.Tk):
 
     def __init__(self):
 
         super().__init__()
+
         self.button = tk.Button(self, text='Add', fg='black',
                                 font=('courier new', 16, 'bold'), command=self.add_entry)
         self.button.place(relx=0.0, rely=0.1, relwidth=0.25, relheight=0.1)
@@ -55,13 +56,21 @@ class LogSearch(tk.Tk):
 #      user that the ID is not in the list.
 
     def add_entry(self):
-        simpledialog.askstring(title="ID", prompt="Enter an ID")
+        add_id = simpledialog.askstring(title="ID", prompt="Enter an ID")
+        add_name = simpledialog.askstring(title="Name", prompt="Enter a name")
+        IDS.update({add_id: add_name})
     def search_entry(self):
-        pass
+        search_id = simpledialog.askstring(title="ID", prompt="Search for an ID")
+        if search_id in IDS:
+            messagebox.showinfo(title="Name", message=IDS[search_id])
     def view_entry(self):
-        pass
+        for key, value in IDS.items():
+            print(str(key) + " : " + str(value))
+
     def remove_entry(self):
-        pass
+        remove_id = simpledialog.askstring(title="ID", prompt="Enter an ID")
+        if remove_id in IDS:
+            del IDS[remove_id]
 if __name__ == '__main__':
 
     logsearch = LogSearch()
