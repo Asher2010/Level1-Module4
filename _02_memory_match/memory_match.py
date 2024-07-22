@@ -24,7 +24,7 @@ class MemoryMatch(tk.Tk):
     WIDTH = 1090
     HEIGHT = 500
     TOTAL_BUTTONS = 52
-    number = random.randint(1, 13)
+
     button_values = {}
 
     def __init__(self):
@@ -49,11 +49,23 @@ class MemoryMatch(tk.Tk):
     def on_button_press(self, event):
         button_pressed = event.widget
         print('Button ' + str(button_pressed) + ' was pressed')
+        number1 = random.randint(1, 13)
+        number2 = random.randint(1, 13)
+        #self.button_values = {number1: self.button_values}
+        if button_pressed['state'] == tk.NORMAL:
+            button_pressed.configure(state=tk.NORMAL, text=number1)
 
-        if button_pressed['state'] == tk.DISABLED:
-            button_pressed.configure(state=tk.NORMAL, text='ON')
-        elif button_pressed['state'] == tk.NORMAL:
-            button_pressed.configure(state=tk.DISABLED, text='OFF')
+        if number1 == number2:
+            if button_pressed['state'] == tk.DISABLED:
+                button_pressed.configure(state=tk.DISABLED, text=number2)
+            else:
+                if button_pressed['state'] == tk.NORMAL:
+                    button_pressed.configure(state=tk.NORMAL, text="test")
+
+
+
+
+
 
     def setup_buttons(self, buttons_per_row):
         # Window size needs to be updated immediately here so the
